@@ -20,7 +20,7 @@ if(isset($_POST["submit"])) {
         $data = $name."\t".$content."\n";
         fwrite($fp, $data);
         fclose($fp);
-        header('Location: index.php');
+        header("Location: " . $_SERVER['PHP_SELF']);
         exit;
     }
 }
