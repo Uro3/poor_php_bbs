@@ -16,7 +16,7 @@ if(isset($_POST["submit"])) {
     }
 
     if($err_msg === "") {
-        $fp = fopen("post.txt", "a");
+        $fp = fopen(__DIR__."/post.txt", "a");
         $data = $name."\t".$content."\n";
         fwrite($fp, $data);
         fclose($fp);

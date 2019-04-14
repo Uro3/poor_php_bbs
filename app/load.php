@@ -1,5 +1,5 @@
 <?php
-$fp = fopen("post.txt", "r");
+$fp = fopen(__DIR__."/post.txt", "r");
  
 $dataArr = array();
 while($res = fgets($fp)){
