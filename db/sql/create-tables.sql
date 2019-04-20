@@ -1,14 +1,15 @@
-CREATE TABLE IF NOT EXISTS `user` (
-    `id` INT AUTO_INCREMENT,
-    `name` VARCHAR(50) NOT NULL,
-    `email` VARCHAR(50) NOT NULL,
-    `password` VARCHAR(50) NOT NULL,
+CREATE TABLE IF NOT EXISTS `users` (
+    `id` INT  AUTO_INCREMENT,
+    `name` VARCHAR(255) NOT NULL,
+    `email` VARCHAR(255) NOT NULL,
+    `password` VARCHAR(255) NOT NULL,
     `created_at` Datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` Datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`id`),
+    UNIQUE (`email`)
 );
 
-CREATE TABLE IF NOT EXISTS `post` (
+CREATE TABLE IF NOT EXISTS `posts` (
     `id` INT AUTO_INCREMENT,
     `user_id` INT NOT NULL,
     `text` TEXT NOT NULL,

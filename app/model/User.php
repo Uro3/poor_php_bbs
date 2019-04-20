@@ -3,7 +3,7 @@
 require_once(__DIR__."/../lib/Database.php");
 
 class User {
-    private $table = "user";
+    private $table = "users";
 
     public function __construct() {}
     
