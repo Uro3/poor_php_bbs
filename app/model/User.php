@@ -3,11 +3,17 @@
 require_once(__DIR__."/../lib/Database.php");
 
 class User {
+    private const TABLE_NAME = "users";
     private $client;
-    private $table = "users";
+    private $table;
 
     public function __construct() {
         $this->client = Database::getInstance();
+        $this->table = self::getTableName();
+    }
+
+    public static function getTableName() {
+        return self::TABLE_NAME;
     }
     
     public function register($user_name, $email, $password) {

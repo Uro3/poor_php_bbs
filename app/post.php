@@ -1,27 +1,43 @@
 <?php
-$name = "";
-$content = "";
-$err_msg = "";
 
-if(isset($_POST["submit"])) {
-    $name = $_POST["name"];
-    $content = $_POST["content"];
+require_once(__DIR__."/model/Post.php");
 
-    if($name === "") {
-        $err_msg .= "名前を入力してください<br>";
-    }
+$post = new Post();
+$errors = array();
+$dataArr = array();
 
-    if($content === "") {
-        $err_msg .= "投稿テキストを入力してください<br>";
-    }
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    if (isset($_POST["submit"])) {
+        $content = $_POST["content"];
+    
+        if($content === "") {
+            $errors[] = "投稿テキストを入力してください";
+        }
+    
+        if(count($errors) === 0) {
+            $result = $post->insert($_SESSION["userId"] ,$content);
+            if ($result) {
+                header("Location: " . $_SERVER['PHP_SELF']);
+            } else {
+                $errors[] = "投稿に失敗しました";
+            }
+        }
+    } else if (isset($_POST["delete"])) {
+        $postId = $_POST["post_id"];
+    
+        if($postId === "") {
+            $errors[] = "不正なリクエストです";
+        }
 
-    if($err_msg === "") {
-        $fp = fopen(__DIR__."/post.txt", "a");
-        $data = $name."\t".$content."\n";
-        fwrite($fp, $data);
-        fclose($fp);
-        header("Location: " . $_SERVER['PHP_SELF']);
-        exit;
+        if(count($errors) === 0) {
+            $result = $post->delete($postId, $_SESSION["userId"]);
+            if ($result) {
+                header("Location: " . $_SERVER['PHP_SELF']);
+            } else {
+                $errors[] = "投稿の削除に失敗しました";
+            }
+        }
     }
 }
-?>
+
+$dataArr = $post->fetch();
