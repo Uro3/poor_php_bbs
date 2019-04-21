@@ -25,7 +25,8 @@ if(isset($_POST["register"])) {
         $user = new User();
         $result = $user->register($name, $email, $password);
         if ($result) {
-            header("Location: /");
+            $_SESSION['userId'] = $result;
+            header('Location: /');
         }
     }
 }

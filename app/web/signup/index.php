@@ -1,4 +1,6 @@
 <?php
+require_once("../../lib/session.php");
+checkSession(false);
 require_once("../../register.php");
 ?>
 

@@ -23,4 +23,8 @@ class Database {
     public function query($sql) {
         return $this->client->query($sql);
     }
+
+    public function getLastInsertedId() {
+        return $this->client->insert_id;
+    }
 }

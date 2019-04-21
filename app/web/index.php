@@ -1,4 +1,6 @@
 <?php
+require_once("../lib/session.php");
+checkSession(true);
 require_once("../post.php");
 require_once("../delete.php");
 require_once("../load.php");
