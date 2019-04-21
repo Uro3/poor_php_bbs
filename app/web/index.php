@@ -14,6 +14,7 @@ require_once("../load.php");
 </head>
 <body>
     <h1>掲示板</h1>
+    <p><a href="/logout">ログアウト</a></p>
     <h2>投稿フォーム</h2>
     <form action="" method="post">
         <label class="form-label">名前</label>
