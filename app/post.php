@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if(count($errors) === 0) {
             $result = $post->insert($_SESSION["userId"] ,$content);
             if ($result) {
-                header("Location: " . $_SERVER['PHP_SELF']);
+                header("Location: /board");
             } else {
                 $errors[] = "投稿に失敗しました";
             }
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if(count($errors) === 0) {
             $result = $post->delete($postId, $_SESSION["userId"]);
             if ($result) {
-                header("Location: " . $_SERVER['PHP_SELF']);
+                header("Location: /board");
             } else {
                 $errors[] = "投稿の削除に失敗しました";
             }

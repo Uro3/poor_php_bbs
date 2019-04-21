@@ -26,7 +26,7 @@ if(isset($_POST["register"])) {
         $result = $user->register($name, $email, $password);
         if ($result) {
             $_SESSION['userId'] = $result;
-            header('Location: /');
+            header('Location: /board');
         }
     }
 }

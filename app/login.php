@@ -22,7 +22,7 @@ if(isset($_POST["login"])) {
         $result = $user->verify($email, $password);
         if ($result) {
             $_SESSION['userId'] = $result;
-            header('Location: /');
+            header('Location: /board');
         } else {
             $errors[] = "メールアドレスまたはパスワードが正しくありません";
         }

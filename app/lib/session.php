@@ -6,7 +6,7 @@ function checkSession(bool $requireAuth) {
     if ($requireAuth && !$isLoggind) {
         header('Location: /login');
     } else if (!$requireAuth && $isLoggind) {
-        header('Location: /');
+        header('Location: /board');
     }
 }
 
