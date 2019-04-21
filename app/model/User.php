@@ -17,10 +17,12 @@ class User {
         return $this->client->getLastInsertedId();;
     }
 
-    public function getUserId($email) {
+    public function verify($email, $password) {
         $sql = "SELECT `id` FROM `{$this->table}`
-            WHERE `email` = '{$email}'";
+            WHERE `email` = '{$email}'
+            AND `password` = '{$password}'";
         $result = $this->client->query($sql);
-        return $result;
+        $row = $result->fetch_assoc();
+        return $row["id"];
     }
 }
